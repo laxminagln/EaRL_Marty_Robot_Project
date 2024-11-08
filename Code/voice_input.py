@@ -1,19 +1,11 @@
 import speech_recognition as sr
-# import pyttsx3
 import martypy
 from googletrans import Translator
 import time
 
-# Initialize Marty, Google Translate, and TTS engine
+# Initialize Marty, Google Translate
 marty = martypy.Marty("wifi","192.168.130.38")  # Replace with your Marty's IP address
 translator = Translator()
-#tts_engine = pyttsx3.init()
-
-"""# Function to make Marty speak
-def speak(text):
-    print(f"Marty says: {text}")
-    tts_engine.say(text)
-    tts_engine.runAndWait()"""
 
 # Function to listen to user's voice input in English
 def listen_for_english():
@@ -88,20 +80,14 @@ def language_learning_exercise():
     # Step 5: Compare user response to the correct translation
     if user_response == spanish_translation:
         # Correct pronunciation
-        marty.disco_color(color=(0, 255, 0), add_on="LEDeye", api='led')
-        #marty.audioEffects.volume = 50
-        #marty.playSoundUntilDone("Whistle")
+        marty.disco_color(color=(0, 255, 0), add_on="LEDeye", api='led') # Show green color for incorrect answer
         marty.speak("Great job! You said it correctly!")
         marty.celebrate()  # Marty dances for correct answer
         marty.get_ready()
         return 1
     else:
-        # Incorrect pronunciation
-        #marty.audioEffects.volume = 50
-        #marty.playSoundUntilDone("Confusion")
-        #marty.audioEffects.volume = 100
         marty.disco_color(color=(255, 0, 0), add_on="LEDeye", api='led')  # Show red color for incorrect answer
-        marty.kick("left")  # Marty shows sadness
+        marty.kick("left")  # Marty kick action
         marty.speak(f"Not quite. The correct pronunciation is: {spanish_translation}. Let's try again.")
         marty.get_ready()
         return 0
