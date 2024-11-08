@@ -10,3 +10,9 @@ The project "Marty The Robot (EaRL) as a Language Learning Buddy - A Human-Robot
 This project allows the reader to understand how socially interactive robots may influence language learning positively, caused by multimodal feedback, among other things, and supportive interaction, in which Marty is a responsive and empathetic learning partner. This can be measured by user engagement metrics, learning accuracy, and qualitative feedback in the context of Marty's impact on user motivation, confidence, and retention regarding Human-Robot Interaction. It also gives insight into the role that robotic feedback can play in enhancing language acquisition and the effectiveness of multimodal interactions involved in learning with an anthropomorphic robotic companion. Expected outcomes are to contribute to the body of knowledge in human-robot interaction and educational robotics with respect to design issues in developing socially interactive robots that foster desirable educational outcomes.
 
 ![image](https://github.com/user-attachments/assets/8c25e30c-3d3a-4072-9d5a-d7ed6fb8554c)
+
+## Code Execution Instructions
+-- Install the packages  - MartyPy, SpeechRecognition, OpenCV, numpy, tensorflow.keras, googletranslate
+-- Keep the python files in 'Code' folder together in a place
+-- Replace the IP addresses in all three python files as of your Marty Robot
+-- Run the 'Master.py' file
