@@ -4,12 +4,13 @@ from tensorflow.keras.applications.mobilenet_v2 import preprocess_input, decode_
 from martypy import Marty
 from googletrans import Translator
 
-marty = Marty("wifi","192.168.130.38")
+# initialise
+marty = Marty("wifi","192.168.130.38") # replace with your Marty's IP address
 translator = Translator()
-
 model = MobileNetV2(weights="imagenet")
 face_cascade = cv2.CascadeClassifier(cv2.data.haarcascades + "haarcascade_frontalface_default.xml")
 
+# capture image
 def capture_image():
     cap = cv2.VideoCapture(0)
     if not cap.isOpened():
@@ -29,11 +30,13 @@ def capture_image():
         cap.release()
         return None
 
+# face detection
 def detect_face(image):
     gray_image = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
     faces = face_cascade.detectMultiScale(gray_image, scaleFactor=1.1, minNeighbors=5, minSize=(30, 30))
     return len(faces) > 0
 
+# object recognition
 def recognize_object(image):
     image_resized = cv2.resize(image, (224, 224))
     image_array = np.array(image_resized, dtype=np.float32)
@@ -45,11 +48,13 @@ def recognize_object(image):
     print(f"Recognized object: {object_name}")
     return object_name
 
+# spanish translation
 def translate_to_spanish(text):
     translation = translator.translate(text, dest="es")
     print(f"Translated to Spanish: {translation.text}")
     return translation.text.lower()
 
+# listen for Spanish voice input
 def listen_for_spanish():
     recognizer = sr.Recognizer()
     with sr.Microphone() as source:
@@ -67,6 +72,7 @@ def listen_for_spanish():
             print("API unavailable or request failed.")
             return None
 
+# main function
 def language_learning_exercise():
     marty.speak("Please show me an object, and I will recognize it.")
     time.sleep(2)
@@ -89,15 +95,16 @@ def language_learning_exercise():
     user_response = listen_for_spanish()
 
     if user_response == spanish_name:
-        marty.disco_color(color=(0, 255, 0), add_on="LEDeye", api='led')
-        marty.dance()
+        marty.disco_color(color=(0, 255, 0), add_on="LEDeye", api='led') # led green light
+        marty.dance() # celebration
         marty.speak("Great job! You said it correctly!")
-        marty.get_ready()
+        marty.get_ready() # reset pose
     else:
-        marty.disco_color(color=(255, 0, 0), add_on="LEDeye", api='led')
-        marty.kick("left")
+        marty.disco_color(color=(255, 0, 0), add_on="LEDeye", api='led') # led red light
+        marty.kick("left") # kick action
         marty.speak(f"Not quite. The correct pronunciation is {spanish_name}.")
-        marty.get_ready()
+        marty.get_ready() # reset pose
 
+# call main function
 if __name__ == "__main__":
     language_learning_exercise()
