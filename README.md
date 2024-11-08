@@ -12,7 +12,7 @@ This project allows the reader to understand how socially interactive robots may
 ![image](https://github.com/user-attachments/assets/8c25e30c-3d3a-4072-9d5a-d7ed6fb8554c)
 
 ## Code Execution Instructions
-- Install the packages  - MartyPy, SpeechRecognition, OpenCV, numpy, tensorflow.keras, googletranslate
+- Install the packages  - MartyPy, SpeechRecognition, OpenCV, numpy, tensorflow.keras, googletrans, subprocess
 - Keep the python files in 'Code' folder together in a place
 - Replace the IP addresses in all three python files as of your Marty Robot
 - Run the 'Master.py' file
